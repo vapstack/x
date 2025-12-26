@@ -22,3 +22,5 @@ for {
     }
 }
 ```
+
+See [GoDoc](https://pkg.go.dev/github.com/vapstack/x/backoff) for reference

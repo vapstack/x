@@ -84,4 +84,4 @@ func (s *MyService) NormalMethodThatMustFinish() error {
 }
 ```
 
-See [GoDoc]() for reference
+See [GoDoc](https://pkg.go.dev/github.com/vapstack/x/proc) for reference
