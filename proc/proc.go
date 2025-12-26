@@ -25,7 +25,8 @@ type Manager struct {
 	stopOnce sync.Once
 	callOnce sync.Once
 
-	count atomic.Int64
+	count   atomic.Int64
+	stopped atomic.Bool
 }
 
 func (m *Manager) init() {
@@ -77,6 +78,11 @@ func (m *Manager) Done() <-chan struct{} {
 	return m.stop
 }
 
+// Stopped reports whether the Manager is stopped.
+func (m *Manager) Stopped() bool {
+	return m.stopped.Load()
+}
+
 // Count returns the number of active workers.
 func (m *Manager) Count() int {
 	return int(m.count.Load())
@@ -111,6 +117,7 @@ func (m *Manager) Stop() {
 	m.init()
 	m.stopOnce.Do(func() {
 		m.stopMu.Lock()
+		m.stopped.Store(true)
 		close(m.stop)
 		m.stopMu.Unlock()
 	})
@@ -328,12 +335,7 @@ func (w Worker) Stopped() bool {
 	if w.mgr == nil {
 		return true
 	}
-	select {
-	case <-w.mgr.Done():
-		return true
-	default:
-		return false
-	}
+	return w.mgr.Stopped()
 }
 
 // Disabled reports whether the Worker was created from a stopped Manager.
