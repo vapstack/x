@@ -6,3 +6,4 @@
 - [`proc`](https://pkg.go.dev/github.com/vapstack/x/proc) - goroutine management and graceful shutdown
 - [`keyrate`](https://pkg.go.dev/github.com/vapstack/x/keyrate) - per-key `rate.Limiter`
 - [`backoff`](https://pkg.go.dev/github.com/vapstack/x/backoff) - simple exponential backoff
+- [`stack`](https://pkg.go.dev/github.com/vapstack/x/stack) - basic stack trace with encoding/decoding support
