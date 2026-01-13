@@ -18,4 +18,4 @@ if !l.Allow("12345") {
 }
 ```
 
-See [GoDoc](https://pkg.go.dev/github.com/vapstack/keyrate) for reference
+See [GoDoc](https://pkg.go.dev/github.com/vapstack/x/keyrate) for reference
