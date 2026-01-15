@@ -58,6 +58,9 @@ func (m *Manager) Add() Worker {
 	}
 }
 
+// Worker is an alias for Add.
+func (m *Manager) Worker() Worker { return m.Add() }
+
 // Go calls fn in a new goroutine and increases the number of active workers.
 // When fn returns, the number of active workers is decreased.
 // If the Manager is already stopped, fn is not called.
